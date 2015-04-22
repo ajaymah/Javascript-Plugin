@@ -1,4 +1,3 @@
-Equel Height Column
 function equelHeight (set_TargetId){
 var id = document.getElementById(set_TargetId);
 var classEq = id.querySelectorAll(".equelHeight");
