@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style type="text/css">
+.tooltip-content{ width:200px; border:2px solid #ccc; padding:8px; box-shadow:0 1px 4px 0 rgba(0, 0, 0, 0.2); background:#fff; font-family:Arial, Helvetica, sans-serif; font-size:13px; position:absolute; display:none; }
+.tooltip-content .close{ width:18px; height:18px; text-align:center; background:#d74d2f; color:#fff; border-radius:50%; position:absolute; top:-9px; right:-9px; cursor:pointer;}
+.tooltip-content em:before{ position:absolute; border-bottom:8px solid #ccc; border-top:8px solid transparent; border-left:8px solid transparent; border-right:8px solid transparent; content:""; position:absolute; left:11px; top:-17px;}
+.showCl{ display:block;}
+</style>
+</head>
+
+<body>
+
+<p>This is Core javascript tooltip and You can use this anyWhere as your requirement, <a href="#" class="tooltip">tooltip</a>
+<div class="tooltip-content">Some browsers also return height and width properties, though this is non-standard. If you're worried about older browser compatibility, check this answer's revisions for an optimised degrading implementation.</div>
+ <a href="#" class="tooltip" >tooltip</a>
+
+<script type="text/javascript">
+function tooltip (par1){
+	var cl = document.querySelectorAll(par1);
+	var z = document.querySelector(".tooltip-content");
+	var samp = document.createElement("samp")
+	var x = z.appendChild(samp);
+	x.setAttribute("class", "close");
+	x.innerHTML = "x"
+	var em = document.createElement("em")
+	z.appendChild(em);
+	x.onclick = function (){
+		z.style.display="none"
+	}
+	for(i=0; i<cl.length; i++){
+		cl[i].onclick = function (){			
+			console.log(z)
+			var rect = this.getBoundingClientRect();
+			var top = rect.top;
+			var left = rect.left;			
+		    z.style.left = left + "px"
+			z.style.top = top+30 + "px"
+			console.log(z.style.display)
+			z.style.display="none";
+			z.style.display="block";			
+		}		
+	}
+}
+tooltip(".tooltip")	
+</script>
+</body>
+</html>
